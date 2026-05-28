@@ -6,7 +6,7 @@ Current version: 0.3.0
   <a href="https://coreyhall93.github.io/site-cleaner/instruction_manual.html">
     <img src="https://img.shields.io/badge/View%20Instructions-Here-0f766e?style=for-the-badge" alt="View instructions here">
   </a>
-  <a href="https://coreyhall93.github.io/site-cleaner/site-cleaner.zip">
+  <a href="https://raw.githubusercontent.com/coreyhall93/site-cleaner/main/site-cleaner.zip">
     <img src="https://img.shields.io/badge/Download%20Plugin-ZIP-115e59?style=for-the-badge" alt="Download plugin zip">
   </a>
 </p>
