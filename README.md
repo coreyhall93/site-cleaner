@@ -6,6 +6,9 @@ Current version: 0.3.0
   <a href="https://coreyhall93.github.io/site-cleaner/instruction_manual.html">
     <img src="https://img.shields.io/badge/View%20Instructions-Here-0f766e?style=for-the-badge" alt="View instructions here">
   </a>
+  <a href="https://coreyhall93.github.io/site-cleaner/site-cleaner.zip">
+    <img src="https://img.shields.io/badge/Download%20Plugin-ZIP-115e59?style=for-the-badge" alt="Download plugin zip">
+  </a>
 </p>
 
 Site Cleaner is a small WordPress admin tool for clearing a test or staging site after the finished client site has already been moved to production with All-in-One WP Migration.
