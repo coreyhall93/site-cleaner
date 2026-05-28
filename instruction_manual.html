@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Site Cleaner Instruction Manual</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --surface: #ffffff;
+      --surface-soft: #f1f5f9;
+      --ink: #172033;
+      --muted: #5a6678;
+      --line: #d8e0ea;
+      --accent: #0f766e;
+      --accent-dark: #115e59;
+      --warning-bg: #fff7e8;
+      --danger-bg: #fff1f1;
+      --code-bg: #eaf0f7;
+      --shadow: 0 14px 38px rgba(23, 32, 51, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent-dark);
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 36px 22px 56px;
+    }
+
+    .article {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    header {
+      padding: 42px 48px 32px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbfd 100%);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent-dark);
+      font-size: 0.78rem;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 860px;
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .lede {
+      max-width: 780px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 5px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 260px;
+      gap: 44px;
+      padding: 38px 48px 48px;
+    }
+
+    main {
+      min-width: 0;
+    }
+
+    nav {
+      position: sticky;
+      top: 18px;
+      align-self: start;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface-soft);
+    }
+
+    nav h2 {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    nav ol {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding-left: 20px;
+      font-size: 0.93rem;
+      line-height: 1.35;
+    }
+
+    section {
+      padding-top: 8px;
+      margin-top: 34px;
+    }
+
+    section:first-child {
+      margin-top: 0;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 1.55rem;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 28px 0 10px;
+      font-size: 1.08rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 16px;
+    }
+
+    ul,
+    ol {
+      margin: 0 0 18px;
+      padding-left: 1.45rem;
+    }
+
+    li {
+      margin: 7px 0;
+    }
+
+    .step-label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--accent-dark);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .callout,
+    .checklist,
+    .reference-list {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface-soft);
+    }
+
+    .callout {
+      padding: 16px 18px;
+      margin: 20px 0;
+    }
+
+    .callout strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .callout.warning {
+      border-color: #f1c37b;
+      background: var(--warning-bg);
+      color: #533307;
+    }
+
+    .callout.danger {
+      border-color: #efb2b2;
+      background: var(--danger-bg);
+      color: #5b2020;
+    }
+
+    .path,
+    code {
+      display: inline-block;
+      max-width: 100%;
+      padding: 1px 6px;
+      border-radius: 5px;
+      background: var(--code-bg);
+      color: #23314a;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.92em;
+      overflow-wrap: anywhere;
+      vertical-align: baseline;
+    }
+
+    .substeps {
+      margin-top: -4px;
+      padding: 14px 18px 1px;
+      border-left: 4px solid var(--accent);
+      background: #f8fbfd;
+    }
+
+    .checklist {
+      padding: 18px 20px;
+    }
+
+    .checklist ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .checklist li {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .checklist li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 12px;
+      height: 12px;
+      border: 2px solid var(--accent);
+      border-radius: 3px;
+      background: #fff;
+    }
+
+    .reference-list {
+      padding: 18px 20px;
+    }
+
+    .reference-list ul {
+      margin-bottom: 0;
+    }
+
+    .divider {
+      height: 1px;
+      margin: 36px 0;
+      background: var(--line);
+    }
+
+    footer {
+      padding: 24px 48px;
+      border-top: 1px solid var(--line);
+      background: #fbfcfe;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 880px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        position: static;
+        order: -1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 18px 12px 36px;
+      }
+
+      header,
+      .content,
+      footer {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        max-width: none;
+        padding: 0;
+      }
+
+      .article {
+        border: 0;
+        box-shadow: none;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .content {
+        display: block;
+        padding: 24px 32px;
+      }
+
+      header,
+      footer {
+        padding: 24px 32px;
+      }
+
+      a {
+        color: #000;
+        text-decoration: underline;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <article class="article">
+      <header>
+        <p class="eyebrow">Rev Ignite Internal Guide</p>
+        <h1>Site Cleaner Instruction Manual</h1>
+        <p class="lede">Use this process to clear a WordPress test or staging domain after the finished client site has already been moved to production with All-in-One WP Migration.</p>
+        <div class="meta" aria-label="Document details">
+          <span class="pill">Plugin: Site Cleaner 0.3.0</span>
+          <span class="pill">Platform: WordPress</span>
+          <span class="pill">Updated: May 28, 2026</span>
+        </div>
+      </header>
+
+      <div class="content">
+        <main>
+          <section id="overview" aria-labelledby="overview-heading">
+            <h2 id="overview-heading">Overview</h2>
+            <p>Site Cleaner clears old client-build content from a test domain while leaving the WordPress install and user accounts in place. It is meant for test and staging sites, not production websites.</p>
+            <p>The plugin uses a guided wizard, a dry run, and a final confirmation phrase so the person running it can see what will happen before anything is deleted.</p>
+
+            <div class="callout warning">
+              <strong>Use this only after production is done</strong>
+              <p>The finished website should already be moved to the production domain and checked before you clean the test domain.</p>
+            </div>
+          </section>
+
+          <section id="before-you-begin" aria-labelledby="before-heading">
+            <h2 id="before-heading">Before You Begin</h2>
+            <p>Make sure you have:</p>
+            <ul>
+              <li>The test or staging domain name.</li>
+              <li>The production domain name.</li>
+              <li>Direct WordPress admin access for the test site.</li>
+              <li>Confirmation that the production site was moved with All-in-One WP Migration.</li>
+              <li>Confirmation that production has been checked and no longer needs anything from the test site.</li>
+            </ul>
+
+            <div class="callout">
+              <strong>Use direct WordPress login</strong>
+              <p>Log into the test site directly with <span class="path">/wp-admin</span>. Check the browser address bar before running the wizard so you do not clean the production site by mistake.</p>
+            </div>
+          </section>
+
+          <section id="install" aria-labelledby="install-heading">
+            <span class="step-label">Step 1</span>
+            <h2 id="install-heading">Install Site Cleaner</h2>
+            <ol>
+              <li>Log into the test or staging WordPress admin directly.</li>
+              <li>Confirm the browser address bar shows the test domain.</li>
+              <li>Go to <span class="path">Plugins -&gt; Add New -&gt; Upload Plugin</span>.</li>
+              <li>Upload <span class="path">site-cleaner.zip</span>.</li>
+              <li>Activate <strong>Site Cleaner</strong>.</li>
+              <li>Go to <span class="path">Tools -&gt; Site Cleaner</span>.</li>
+            </ol>
+          </section>
+
+          <section id="wizard" aria-labelledby="wizard-heading">
+            <span class="step-label">Step 2</span>
+            <h2 id="wizard-heading">Walk Through The Wizard</h2>
+            <ol>
+              <li>Confirm you are logged into the test or staging domain.</li>
+              <li>Confirm the finished site has already been moved to production.</li>
+              <li>Review the content cleanup options.</li>
+              <li>Review the site title, ready screen title, and ready screen message.</li>
+              <li>Review the plugin and theme deletion lists.</li>
+              <li>Uncheck anything the test site should keep.</li>
+            </ol>
+
+            <div class="callout warning">
+              <strong>Plugin and theme defaults are aggressive</strong>
+              <p>Most non-protected plugins and themes are checked for deletion by default, including migration/build plugins. Site Cleaner, ManageWP Worker, network-active plugins, and Twenty Twenty-Five are protected.</p>
+            </div>
+          </section>
+
+          <section id="dry-run" aria-labelledby="dry-run-heading">
+            <span class="step-label">Step 3</span>
+            <h2 id="dry-run-heading">Run The Dry Run</h2>
+            <ol>
+              <li>Click <strong>Run dry run</strong>.</li>
+              <li>Read the output list.</li>
+              <li>Confirm the list matches what you expect to remove.</li>
+              <li>If something should stay, scroll back up, uncheck it, and run the dry run again.</li>
+            </ol>
+            <p>The dry run does not change the site.</p>
+          </section>
+
+          <section id="final-clean" aria-labelledby="final-clean-heading">
+            <span class="step-label">Step 4</span>
+            <h2 id="final-clean-heading">Run The Final Clean</h2>
+            <div class="callout danger">
+              <strong>Only continue when the dry run looks right</strong>
+              <p>The final clean permanently deletes the selected content, plugins, and themes.</p>
+            </div>
+            <ol>
+              <li>Check both confirmation boxes at the top of the wizard.</li>
+              <li>Type <code>CLEAN TEST SITE</code> exactly.</li>
+              <li>Click <strong>Clean test site</strong>.</li>
+              <li>Wait for the result list to finish.</li>
+            </ol>
+          </section>
+
+          <section id="after-cleanup" aria-labelledby="after-heading">
+            <span class="step-label">Step 5</span>
+            <h2 id="after-heading">Check The Test Site</h2>
+            <ol>
+              <li>Open the test domain in a browser.</li>
+              <li>Confirm the old client site is gone.</li>
+              <li>Confirm the ready screen appears.</li>
+              <li>Log back into WordPress admin.</li>
+              <li>Check <span class="path">Pages</span>, <span class="path">Posts</span>, and <span class="path">Media</span>.</li>
+              <li>Check <span class="path">Plugins</span> and <span class="path">Themes</span>.</li>
+              <li>If the test domain is tracked in ManageWP, confirm ManageWP opens the test domain's WordPress admin.</li>
+            </ol>
+          </section>
+
+          <div class="divider" role="presentation"></div>
+
+          <section id="checklist" aria-labelledby="checklist-heading">
+            <h2 id="checklist-heading">Quick Checklist</h2>
+            <div class="checklist">
+              <ul>
+                <li>Production site has already been moved and checked.</li>
+                <li>You are logged into the test or staging WordPress admin.</li>
+                <li><span class="path">site-cleaner.zip</span> is uploaded and active.</li>
+                <li>The wizard confirmations are checked.</li>
+                <li>The dry run output has been reviewed.</li>
+                <li>The final phrase <span class="path">CLEAN TEST SITE</span> is typed exactly.</li>
+                <li>The old client build is gone from the test domain.</li>
+                <li>ManageWP opens the correct test-domain admin, if used.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="protected" aria-labelledby="protected-heading">
+            <h2 id="protected-heading">Protected Items</h2>
+            <p>Site Cleaner will not delete:</p>
+            <ul>
+              <li>WordPress users.</li>
+              <li>Site Cleaner.</li>
+              <li>ManageWP Worker.</li>
+              <li>Network-active plugins.</li>
+              <li>Twenty Twenty-Five.</li>
+              <li>Any plugin or theme you uncheck before the final clean.</li>
+            </ul>
+          </section>
+
+          <section id="managewp" aria-labelledby="managewp-heading">
+            <h2 id="managewp-heading">ManageWP Notes</h2>
+            <p>ManageWP usually should not need to be reconnected after Site Cleaner runs. The plugin protects ManageWP Worker and keeps WordPress in place.</p>
+            <h3>If ManageWP opens the wrong site</h3>
+            <ol>
+              <li>Stop using ManageWP one-click login for that site.</li>
+              <li>Log into the test site directly through <span class="path">/wp-admin</span>.</li>
+              <li>Confirm ManageWP Worker is installed and active.</li>
+              <li>Confirm the saved ManageWP URL is the test domain.</li>
+              <li>Reconnect the test domain only if ManageWP still cannot sync or open the correct WordPress admin.</li>
+            </ol>
+          </section>
+
+          <section id="reminders" aria-labelledby="reminders-heading">
+            <h2 id="reminders-heading">Important Reminders</h2>
+            <ul>
+              <li>Always verify the browser address bar before making changes.</li>
+              <li>Always run the dry run first.</li>
+              <li>Never run the final clean on production.</li>
+              <li>When unsure, uncheck the plugin or theme before continuing.</li>
+              <li>When the dry run looks wrong, stop and fix the selections.</li>
+            </ul>
+          </section>
+
+          <section id="references" aria-labelledby="references-heading">
+            <h2 id="references-heading">Helpful References</h2>
+            <div class="reference-list">
+              <ul>
+                <li><a href="https://wordpress.org/plugins/all-in-one-wp-migration/">All-in-One WP Migration</a></li>
+                <li><a href="https://managewp.com/guide/getting-started">ManageWP: Getting Started</a></li>
+                <li><a href="https://managewp.com/blog/site-connection-issues">ManageWP: Common Website Connection Issues</a></li>
+              </ul>
+            </div>
+          </section>
+        </main>
+
+        <nav aria-label="On this page">
+          <h2>On This Page</h2>
+          <ol>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#before-you-begin">Before You Begin</a></li>
+            <li><a href="#install">Install</a></li>
+            <li><a href="#wizard">Wizard</a></li>
+            <li><a href="#dry-run">Dry Run</a></li>
+            <li><a href="#final-clean">Final Clean</a></li>
+            <li><a href="#after-cleanup">After Cleanup</a></li>
+            <li><a href="#checklist">Checklist</a></li>
+            <li><a href="#protected">Protected Items</a></li>
+            <li><a href="#managewp">ManageWP</a></li>
+          </ol>
+        </nav>
+      </div>
+
+      <footer>
+        Internal Rev Ignite support document generated from the Site Cleaner README. Use the HTML file as the cleaner shareable version.
+      </footer>
+    </article>
+  </div>
+</body>
+</html>
